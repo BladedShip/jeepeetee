@@ -11,7 +11,7 @@ function Home() {
             <h2>Examples</h2>
           </div>
           <div className="space-y-2">
-            <p className="infoText">"Why are you gay?"</p>
+            <p className="infoText">"Why are you gay??"</p>
             <p className="infoText">"Why am I henceforth unable to can?"</p>
             <p className="infoText">"To be or not to be, that is the questions. OR IS IT?"</p>
           </div>

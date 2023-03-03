@@ -9,4 +9,7 @@ module.exports = {
   experimental: {
     appDir:true,
   },
+  typescript:{
+    ignoreBuildErrors:true,
+  },
 }

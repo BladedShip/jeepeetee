@@ -1,10 +1,10 @@
-import Sidebar from "../components/Sidebar";
-import "../styles/globals.css";
 import { getServerSession } from "next-auth";
-
 import { SessionProvider } from "../components/SessionProvider";
 import { authOptions } from "../pages/api/auth/[...nextauth]";
+
 import Login from "../components/Login";
+import Sidebar from "../components/Sidebar";
+import "../styles/globals.css";
 
 export const metadata = {
   title: "Next.js",

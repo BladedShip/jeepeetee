@@ -31,18 +31,22 @@ function Chat({ chatId }: Props) {
       )
   );
 
-  const AlwaysScrollToBottom = () => {
-    const elementRef = useRef();
-    useEffect(() => elementRef.current.scrollIntoView());
+  const AlwaysScrollToBottom: React.FC = () => {
+    const elementRef = useRef<HTMLDivElement>(null);
+    useEffect(() => {
+      if (elementRef.current) {
+        elementRef.current.scrollIntoView();
+      }
+    });
     return <div ref={elementRef} />;
   };
-
+  
   return (
     <div className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-white scrollbar-track-transparent">
       {messages?.empty && (
         <>
           <p className="mt-10 text-center text-white">
-            Ask JeePeeTee an Question below
+            Ask JeePeeTee a Question below
           </p>
           <ArrowDownCircleIcon className="h-10 w-10 mx-auto mt-5 text-white animate-bounce" />
         </>

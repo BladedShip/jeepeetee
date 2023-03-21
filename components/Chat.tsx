@@ -3,6 +3,7 @@
 import { ArrowDownCircleIcon } from "@heroicons/react/24/outline";
 import { collection, orderBy, query } from "firebase/firestore";
 import { useSession } from "next-auth/react";
+import { useEffect, useRef } from "react";
 import { useCollection } from "react-firebase-hooks/firestore";
 
 import { db } from "../firebase";
@@ -30,8 +31,14 @@ function Chat({ chatId }: Props) {
       )
   );
 
+  const AlwaysScrollToBottom = () => {
+    const elementRef = useRef();
+    useEffect(() => elementRef.current.scrollIntoView());
+    return <div ref={elementRef} />;
+  };
+
   return (
-    <div className="flex-1 overflow-y-auto overflow-x-hidden">
+    <div className="flex-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-white scrollbar-track-transparent">
       {messages?.empty && (
         <>
           <p className="mt-10 text-center text-white">
@@ -42,7 +49,9 @@ function Chat({ chatId }: Props) {
       )}
       {messages?.docs.map((message) => (
         <Message key={message.id} message={message.data()} />
+
       ))}
+      <AlwaysScrollToBottom/>
     </div>
   );
 }

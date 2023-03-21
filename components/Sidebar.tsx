@@ -3,6 +3,7 @@
 import { useSession, signOut } from "next-auth/react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { collection, orderBy, query } from "firebase/firestore";
+import { ArrowLeftOnRectangleIcon } from "@heroicons/react/24/outline";
 
 import { db } from "../firebase";
 import NewChat from "./NewChat";
@@ -23,7 +24,7 @@ function Sidebar() {
   return (
     <div className="p-2 flex flex-col h-screen">
       <div className="flex-1">
-        <div>
+        <div className="space-y-4">
           <NewChat />
           <div>
             {/* Chat Model Selector */}
@@ -44,12 +45,16 @@ function Sidebar() {
         </div>
       </div>
       {session && (
-        <img
-          onClick={() => signOut()}
-          src={session.user?.image!}
-          alt="Profile Picture"
-          className="h-12 w-12 rounded-full cursor-pointer mx-auto mb-2 hover:opacity-50"
-        />
+        <div className="flex items-center justify-center mx-auto space-x-4 text-white hover:opacity-50 transition-opacity ease-in-out cursor-pointer mb-2">
+          <img
+            onClick={() => signOut()}
+            src={session.user?.image!}
+            alt="Profile Picture"
+            className="h-12 w-12 rounded-full"
+          />
+          <p>{session.user?.name}</p>
+          <ArrowLeftOnRectangleIcon className="h-6 w-6" />
+        </div>
       )}
     </div>
   );

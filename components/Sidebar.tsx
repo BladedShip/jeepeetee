@@ -45,9 +45,8 @@ function Sidebar() {
         </div>
       </div>
       {session && (
-        <div className="flex items-center justify-center mx-auto space-x-4 text-white hover:opacity-50 transition-opacity ease-in-out cursor-pointer mb-2">
+        <div className="flex items-center justify-center mx-auto space-x-4 text-white hover:opacity-50 transition-opacity ease-in-out cursor-pointer mb-2" onClick={() => signOut()}>
           <img
-            onClick={() => signOut()}
             src={session.user?.image!}
             alt="Profile Picture"
             className="h-12 w-12 rounded-full"
